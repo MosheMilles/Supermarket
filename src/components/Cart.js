@@ -1,15 +1,17 @@
+import './styles/Cart.css';
+import CartProduct from "./CartProduct";
 import { useContext } from "react";
 import CartContext from "../contexts/CartContext";
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-function Cart() {
-  
+function Cart({ totalPrice }) {
+
   const cart = useContext(CartContext);
   return (
-    <div>
-      {cart.data.map(product => <div>{product.name}</div>)}
+    <div className="cart">
+      <div className="totalPrice">{totalPrice} ש"ח</div>
+      <div className="cartProducts">
+        {cart.data.map(product => <CartProduct product={product} />)}
+      </div>
     </div>
-  )};
+  )
+};
 export default Cart;
-  
